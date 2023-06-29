@@ -1,4 +1,5 @@
-import { Canvas as ThreeCanvas, } from '@react-three/fiber'
+import { Canvas as ThreeCanvas } from '@react-three/fiber'
+import { Environment, FaceControls, FaceLandmarker } from '@react-three/drei'
 
 interface Props {
   children: JSX.Element
@@ -7,9 +8,11 @@ interface Props {
 const Canvas = (props: Props) => {
   return (
     <ThreeCanvas>
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} />
+      <Environment
+        preset='city'
+        background={true}
+        blur={0.15}
+      />
       {props.children}
     </ThreeCanvas>
   )
