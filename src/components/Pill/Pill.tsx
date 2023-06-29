@@ -19,7 +19,7 @@ const Pill = ({ onPivot }: Props) => {
   }, [rotationString, positionString])
 
   return (
-    <group position={[0,-1,0]}>
+    <group>
       <PivotControls
         scale={2}
         rotation={[0, -1, 0]}
