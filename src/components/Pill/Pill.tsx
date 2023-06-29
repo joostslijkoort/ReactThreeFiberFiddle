@@ -1,12 +1,35 @@
 import { PivotControls } from '@react-three/drei'
+import { useEffect, useMemo, useState } from 'react';
+import { Quaternion, Vector3 } from 'three';
+import { formatCoordinates } from '../../utils';
 
-const Pill = () => {
+interface Props {
+  onPivot: (rotation: string, position: string) => void
+}
+const Pill = ({ onPivot }: Props) => {
+  const [rotation, setRotation] = useState(new Quaternion());
+  const [position, setPosition] = useState(new Vector3());
+  
+  const rotationString = useMemo(() => formatCoordinates(rotation), [rotation]);
+  const positionString = useMemo(() => formatCoordinates(position), [position]);
+
+  useEffect(() => {
+    onPivot(`rotation: ${rotationString}`, `position: ${positionString}`);
+  }, [rotationString, positionString])
+
   return (
     <PivotControls
       scale={2}
       disableSliders={true}
       anchor={[0, 0.35, 0]}
       depthTest={false}
+      onDrag={(_l, _dl, w, _dw) => {
+        const position = new Vector3()
+        const rotation = new Quaternion()
+        w.decompose(position, rotation, new Vector3())
+        setRotation(rotation)
+        setPosition(position)
+      }}
       >
         <mesh>
           <capsuleGeometry args={[1, 1, 32, 32]} />
