@@ -4,8 +4,8 @@ import Pill from '../../components/Pill'
 import Stats from '../../components/Stats'
 
 const Dashboard = () => {
-  const [rotation, setRotation] = useState<string>();
-  const [position, setPosition] = useState<string>();
+  const [rotation, setRotation] = useState<string>('');
+  const [position, setPosition] = useState<string>('');
 
   return (
     <>
