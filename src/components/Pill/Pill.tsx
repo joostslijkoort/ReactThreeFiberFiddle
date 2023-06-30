@@ -26,7 +26,7 @@ const Pill = ({ onPivot }: Props) => {
         disableSliders={true}
         anchor={[0, 0.35, 0]}
         depthTest={false}
-        onDrag={(_l, _dl, w, _dw) => {
+        onDrag={(_l, _dl, w) => {
           const position = new Vector3()
           const rotation = new Quaternion()
           w.decompose(position, rotation, new Vector3())

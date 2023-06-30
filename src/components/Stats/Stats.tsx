@@ -1,4 +1,8 @@
-const Stats = ({ rotation, position }: any) => {
+interface Props {
+  rotation: string,
+  position: string
+}
+const Stats = ({ rotation, position }: Props) => {
   return (
     <div className="fixed z-10 top-0 right-0 bg-black/20 p-3.5 mr-1 block rounded-b-lg">
       <div className='text-gray-900'>{rotation}</div>
